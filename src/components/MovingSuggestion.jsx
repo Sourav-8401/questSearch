@@ -42,7 +42,7 @@ function MovingSuggestion() {
   }
 
   return (
-    <div className="overflow-hidden relative mt-5 w-[750px] h-[200px]">
+    <div className={"overflow-hidden relative mt-5 w-[750px] h-[200px]"}>
       <div className="bg-gradient-to-r absolute from-[#101010] z-50 w-32 h-24 to-transparent"></div>
       <div className="flex animate-marquee  p-2 gap-5">
         {repeatedSentence1.map((sentence, ind) => (

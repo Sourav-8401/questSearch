@@ -1,5 +1,5 @@
 import React from 'react'
-import SearchBox from '../components/searchbox'
+import SearchBox from '../components/SearchBox'
 import MovingSuggestion from '../components/MovingSuggestion'
 
 function HomePage() {
@@ -9,7 +9,9 @@ function HomePage() {
         QuestSearch
       </h1>
       <SearchBox/>
-      <MovingSuggestion/>
+
+      {true &&  <MovingSuggestion/>}
+      
     </div>
   )
 }

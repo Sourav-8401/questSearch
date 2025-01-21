@@ -9,6 +9,13 @@ function SearchBox() {
     console.log(e.target.value);
   }
 
+  const row2 = [
+    "Our final decision was beneficial for both parties.",
+    "When I go on a trip, I choose shoes that I can wear many times.",
+    "How do you stay updated with the latest trends in human resources?",
+    "Rearrange the words to form a sentence",
+    "When I go on a trip, I choose shoes that I can wear many times.",
+  ];
 
 
 
@@ -18,9 +25,10 @@ function SearchBox() {
 
 
   return (
+    <div>
     <div className="overflow-hidden max-h-[70px]  flex justify-start gap-2 relative w-[750px] mt-[25px] p-2 rounded-3xl border border-gray-2mb-1000 bg-background dark:border-gray-800">
       <div>
-        <img src="../../public/icon.png" alt="" className="w-12 rounded-lg mt-1.5" />
+        <img src="/icon.png" alt="" className="w-12 rounded-lg mt-1.5" />
       </div>
       <form
         action=""
@@ -36,6 +44,15 @@ function SearchBox() {
           <IoIosArrowForward />
         </button>
       </form>
+    </div>
+      
+      {/* <div className="flex flex-col float-start gap-y-3 ms-16 mt-3 text-left">
+      {
+        row2.map(sentence=>(
+          <p>{sentence}</p>
+        ))
+      }
+      </div> */}
     </div>
   );
 }
