@@ -41,7 +41,7 @@ function DisplaySearchResult({ searchResult }) {
   };
 
   return (
-    <div className="space-y-4 mt-14">
+    <div className="space-y-4 ">
       <div className="gap-3 sticky top-[-1px] py-8 bg-white w-full h-full m-0 dark:bg-[#101010] flex items-center">
         Filters:
         {filters.map((item, idx) => (

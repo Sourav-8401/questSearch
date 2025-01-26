@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import SearchBox from "../components/SearchBox";
-import MovingSuggestion from "../components/MovingSuggestion";
-import axios from "axios";
 function HomePage() {
   return (
     <div className="mt-32">

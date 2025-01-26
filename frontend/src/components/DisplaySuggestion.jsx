@@ -1,6 +1,6 @@
 import React from 'react'
 import { IoSearchSharp } from "react-icons/io5";
-function DisplaySuggestion({suggestionData}) {
+function DisplaySuggestion({suggestionData, handleTypingSuggestionClick}) {
   return (
     <>
     {suggestionData.length > 0 && (
@@ -8,7 +8,8 @@ function DisplaySuggestion({suggestionData}) {
           {suggestionData.map((sentence) => (
             <p
               key={sentence._id}
-              className="inline-flex gap-4 hover:bg-zinc-800 w-full py-0.5 px-2 rounded-xl"
+              onClick={()=>(handleTypingSuggestionClick(sentence.title))}
+              className="inline-flex gap-4 cursor-pointer hover:bg-zinc-800 w-full py-0.5 px-2 rounded-xl"
             >
               <IoSearchSharp className="relative top-[6px]" /> {sentence.title}
             </p>

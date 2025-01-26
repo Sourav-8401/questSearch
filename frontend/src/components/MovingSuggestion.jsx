@@ -1,4 +1,4 @@
-function MovingSuggestion({handleSuggestionClick}) {
+function MovingSuggestion({handleMovingSuggestionClick}) {
   const row1 = [
     "⭐ Rearrange the letters to form a word",
     "🚢 Working in this role will help me",
@@ -34,7 +34,7 @@ function MovingSuggestion({handleSuggestionClick}) {
       <div className="flex  animate-marquee p-2 gap-5">
         {repeatedSentenceRow1.map((sentence, ind) => (
           <button 
-          onClick={()=>handleSuggestionClick(sentence)} 
+          onClick={()=>handleMovingSuggestionClick(sentence)} 
           className="dark:bg-zinc-800 bg-gray-100  inline-flex rounded-xl ps-2 pe-4 min-w-fit py-1 ">
             {sentence}
           </button>
