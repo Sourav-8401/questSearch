@@ -15,7 +15,7 @@ const showSuggestion = async (req, res) => {
             { title: 1 }
         ).limit(7);
 
-        if (queryRes.length === 0) {
+       if (queryRes.length === 0) {
             return res.status(404).json({
                 message: "No data found",
             });

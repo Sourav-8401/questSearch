@@ -4,32 +4,46 @@ import { IoIosArrowForward } from "react-icons/io";
 import MovingSuggestion from "./MovingSuggestion";
 import DisplaySearchResult from "./DisplaySearchResult";
 import DisplaySuggestion from "./DisplaySuggestion";
+
 function SearchBox() {
   const [searchInput, setSearchInput] = useState("");
   const [suggestionData, setSuggestionData] = useState([]);
   const [searchResult, setSearchResult] = useState([]);
 
   const handleSearchInput = (e) => {
-    setSearchInput(e.target.value);
-    if(searchInput.length == 0){
+    const input = e.target.value;
+    setSearchInput(input);
+
+    if (input.trim().length === 0) {
       setSearchResult([]);
+      setSuggestionData([]);
     }
   };
+
+  const handleSuggestionClick = (query) => {
+    const processedData = query.slice(3);
+    setSearchInput(processedData);
+    setSuggestionData([]);
+    handleSearch(processedData); 
+  };
+
   const limits = 10;
-  const handleSearch = async () => {
-    if (!searchInput) {
+
+  const handleSearch = async (input = searchInput) => {
+    if (!input.trim()) {
       console.log("Query is empty");
       return;
     }
+
     try {
       const response = await axios.get(
-        `http://localhost:3001/search/searchtitles?search=${searchInput}&limits=${limits}`
+        `http://localhost:3001/search/searchtitles?search=${input}&limits=${limits}`
       );
       const responseData = response.data.data;
-      setSuggestionData([])
+      setSuggestionData([]);
       setSearchResult(responseData);
     } catch (error) {
-      console.log("Error while fetching data", error);
+      console.error("Error while fetching data", error);
     }
   };
 
@@ -40,6 +54,7 @@ function SearchBox() {
       setSuggestionData([]);
       return;
     }
+
     try {
       const response = await axios.get(
         `http://localhost:3001/search/suggest?search=${query}`
@@ -80,14 +95,27 @@ function SearchBox() {
             placeholder="Search..."
             className="w-full text-lg scrollbar-none resize-none z-50 border-none dark:text-white bg-transparent h-full rounded-xl focus:outline-none focus:ring-0 pl-3 pr-20"
           ></textarea>
-          <button className="absolute right-2 top-1/2 z-50 -translate-y-1/2 h-8 w-10 rounded-full flex items-center justify-center">
+          <button
+            type="button"
+            onClick={handleSearch} 
+            className="absolute right-2 top-1/2 z-50 -translate-y-1/2 h-8 w-10 rounded-full flex items-center justify-center"
+          >
             <IoIosArrowForward />
           </button>
         </form>
       </div>
-      {searchInput.length <= 0 && <MovingSuggestion />}
-      <DisplaySuggestion suggestionData={suggestionData} />
-      {searchInput.length > 0 && searchResult.length > 0 && <DisplaySearchResult searchResult={searchResult} setSearchResult={setSearchResult}/>}
+      {searchInput.length <= 0 && (
+        <MovingSuggestion handleSuggestionClick={handleSuggestionClick} />
+      )}
+      {searchInput.length > 0 && (
+        <DisplaySuggestion suggestionData={suggestionData} />
+      )}
+      {searchInput.length > 0 && searchResult.length > 0 && (
+        <DisplaySearchResult
+          searchResult={searchResult}
+          setSearchResult={setSearchResult}
+        />
+      )}
     </div>
   );
 }
