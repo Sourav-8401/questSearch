@@ -15,7 +15,7 @@ function DisplaySearchResult({ searchResult }) {
   ];
 
   useEffect(() => {
-    console.log(searchResult)
+    console.log(searchResult);
     setToShowData(searchResult);
   }, [searchResult]);
 
@@ -74,6 +74,20 @@ function DisplaySearchResult({ searchResult }) {
                   : data.type}
               </p>
             </div>
+            {data.type === "ANAGRAM" && data.blocks && (
+              <div>
+                <div className="mt-4 flex flex-wrap gap-4">
+                  {data.blocks.map((block, idx) => (
+                    <p
+                      key={idx}
+                      className="text-sm font-semibold bg-orange-400 w-fit py-3 px-5 rounded-lg"
+                    >
+                      {block.text}
+                    </p>
+                  ))}
+                </div>
+              </div>
+            )}
 
             {data.type === "MCQ" && data.options && (
               <div className="mt-4">
@@ -83,11 +97,7 @@ function DisplaySearchResult({ searchResult }) {
                     <div
                       key={idx}
                       onClick={() =>
-                        handleOptionClick(
-                          data._id,
-                          idx,
-                          option.isCorrectAnswer
-                        )
+                        handleOptionClick(data._id, idx, option.isCorrectAnswer)
                       }
                       className={`flex border py-1 px-2 my-2 rounded-lg items-center cursor-pointer ${
                         questionState.selectedIdx === idx
