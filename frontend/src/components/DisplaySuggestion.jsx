@@ -9,7 +9,7 @@ function DisplaySuggestion({suggestionData, handleTypingSuggestionClick}) {
             <p
               key={sentence._id}
               onClick={()=>(handleTypingSuggestionClick(sentence.title))}
-              className="inline-flex gap-4 cursor-pointer hover:bg-zinc-800 w-full py-0.5 px-2 rounded-xl"
+              className="inline-flex gap-4 cursor-pointer hover:bg-gray-200 dark:hover:bg-zinc-800 w-full py-0.5 px-2 rounded-xl"
             >
               <IoSearchSharp className="relative top-[6px]" /> {sentence.title}
             </p>

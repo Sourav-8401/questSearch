@@ -94,7 +94,7 @@ function DisplaySearchResult({ searchResult }) {
                           ? questionState.isCorrect
                             ? "bg-green-500 text-white"
                             : "bg-red-500 text-white"
-                          : "border-zinc-700 hover:bg-zinc-700"
+                          : "border-zinc-700 hover:bg-gray-200 dark:hover:bg-zinc-700"
                       }`}
                     >
                       <label>{option.text}</label>

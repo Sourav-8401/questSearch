@@ -109,6 +109,8 @@ function SearchBox() {
               if (e.key === "Enter" && !e.shiftKey) {
                 e.preventDefault();
                 handleSearch();
+              }else if(e.key === "Backspace"){
+                setSearchResult([]);
               }
             }}
             value={searchInput}
@@ -118,7 +120,7 @@ function SearchBox() {
           {/* Search button */}
           <button
             type="button"
-            onClick={handleSearch}
+            onClick={()=>{handleSearch(searchInput)}}
             className="absolute right-2 top-1/2 z-50 -translate-y-1/2 h-8 w-10 rounded-full flex items-center justify-center"
           >
             <IoIosArrowForward />
@@ -140,10 +142,10 @@ function SearchBox() {
           handleTypingSuggestionClick={handleTypingSuggestionClick}
         />
       )}
- {   loading &&  <div className="sweet-loading mt-20">
+ {loading &&  <div className="sweet-loading  mt-20">
         <ClipLoader
           loading={loading}
-          color="white"
+          color={"gray"}
           size={30}
           aria-label="Loading Spinner"
           data-testid="loader"
