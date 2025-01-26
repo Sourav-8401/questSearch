@@ -37,7 +37,7 @@ function SearchBox() {
 
     try {
       const response = await axios.get(
-        `http://localhost:3001/search/searchtitles?search=${input}&limits=${limits}`
+        `https://quest-search-backend.vercel.app/search/searchtitles?search=${input}&limits=${limits}`
       );
       const responseData = response.data.data;
       setSuggestionData([]);
@@ -57,7 +57,7 @@ function SearchBox() {
 
     try {
       const response = await axios.get(
-        `http://localhost:3001/search/suggest?search=${query}`
+        `https://quest-search-backend.vercel.app/search/suggest?search=${query}`
       );
       const processedData = response.data.data.map((item) => ({
         ...item,
