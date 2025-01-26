@@ -96,7 +96,7 @@ function SearchBox() {
         {/* Search form */}
         <form
           action=""
-          className="w-full relative flex justify-between items-center py-3 px-1 bg-white dark:bg-zinc-800 rounded-2xl overflow-hidden shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),_0px_1px_0px_0px_rgba(25,28,33,0.02),_0px_0px_0px_1px_rgba(25,28,33,0.08)] transition duration-1000"
+          className="w-full relative flex justify-between items-center py-3 px-1 bg-white dark:bg-zinc-800 rounded-2xl overflow-hidden shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),_0px_1px_0px_0px_rgba(25,28,33,0.02),_0px_0px_0px_1px_rgba(25,28,33,0.08)]"
         >
           {/* Textarea for search input */}
           <textarea

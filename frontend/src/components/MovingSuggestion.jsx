@@ -43,7 +43,7 @@ function MovingSuggestion({handleMovingSuggestionClick}) {
       <div className="flex animate-marquee-reverse  button-2 gap-5">
         {repeatedSentenceRow2.map((sentence, ind) => (
           <button 
-          onClick={()=>handleSuggestionClick(sentence)}
+          onClick={()=>handleMovingSuggestionClick(sentence)}
           className="dark:bg-zinc-800 inline-flex bg-gray-100 rounded-xl ps-2 pe-4 min-w-fit py-1  ">
             {sentence}
           </button>
