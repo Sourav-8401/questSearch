@@ -1,0 +1,86 @@
+syntax = "proto3";
+
+package search;
+
+service SearchService {
+  rpc ShowSuggestion (SuggestionRequest) returns (SuggestionResponse) {}
+  rpc SearchTitles (SearchRequest) returns (SearchResponse) {}
+}
+
+message SuggestionRequest {
+  string search = 1;
+}
+
+message SearchRequest {
+  string search = 1;
+  optional int32 limits = 2;
+}
+
+message SuggestionResponse {
+  oneof result {
+    SuggestionData data = 1;
+    Error error = 2;
+  }
+}
+
+message SearchResponse {
+  oneof result {
+    SearchData data = 1;
+    Error error = 2;
+  }
+}
+
+message SuggestionData {
+  repeated TitleInfo titles = 1;
+}
+
+message SearchData {
+  repeated Question questions = 1;
+}
+
+message TitleInfo {
+  string id = 1;
+  string title = 2;
+}
+
+message Error {
+  string message = 1;
+  optional string details = 2;
+}
+
+enum QuestionType {
+  UNKNOWN = 0;
+  ANAGRAM = 1;
+  MCQ = 2;
+  READ_ALONG = 3;
+  CONTENT_ONLY = 4;
+  CONVERSATION = 5;
+}
+
+enum AnagramType {
+  UNSPECIFIED = 0;
+  SENTENCE = 1;
+  WORD = 2;
+}
+
+message Block {
+  string text = 1;
+  bool show_in_option = 2;
+  bool is_answer = 3;
+}
+
+message Option {
+  string text = 1;
+  bool is_correct_answer = 2;
+}
+
+message Question {
+  string id = 1;
+  QuestionType type = 2;
+  optional AnagramType anagram_type = 3;
+  repeated Block blocks = 4;
+  repeated Option options = 5;
+  optional string sibling_id = 6;
+  optional string solution = 7;
+  string title = 8;
+}

@@ -2,8 +2,6 @@
 
 This is a responsive Quiz Application built using React.js. The app dynamically renders various types of questions, including multiple-choice questions (MCQs) and other types like anagrams, with a filtering mechanism for users to focus on specific types of questions.
 
-Deployed at: [questsearch.vercel.app](https://questsearch.vercel.app)
-
 ## Features
 
 - **Filters**: Filter questions by type, such as MCQs, anagrams, etc., or reset to view all.
@@ -75,10 +73,20 @@ Deployed at: [questsearch.vercel.app](https://questsearch.vercel.app)
    yarn start
    ```
 
-7. Open the app in your browser:
+7. Start the gRPC server:
+
+   ```bash
+   cd grpcServer
+   npm start
+   ```
+
+   Server running on the port: [http://0.0.0.0:8082](http://0.0.0.0:8082)
+
+8. Open the app in your browser:
 
    - Frontend: `http://localhost:5173`
    - Backend: `http://localhost:3001`
+
 
 
 ## Functionality
@@ -123,9 +131,6 @@ Contributions are welcome! To contribute:
    ```
 5. Open a pull request.
 
-## License
-
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
 ## Contact
 
